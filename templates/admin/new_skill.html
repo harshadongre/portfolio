@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="bg-white p-8 rounded-lg shadow-md">
+        <h1 class="text-3xl font-bold text-gray-900 mb-8">Add New Skill</h1>
+        
+        <form method="POST" class="space-y-6">
+            <!-- Skill Name -->
+            <div>
+                <label for="name" class="block text-gray-700 font-medium mb-2">Skill Name</label>
+                <input type="text" id="name" name="name" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                       placeholder="e.g., Python, JavaScript, React">
+            </div>
+            
+            <!-- Skill Level -->
+            <div>
+                <label for="level" class="block text-gray-700 font-medium mb-2">Skill Level (0-100)</label>
+                <input type="number" id="level" name="level" min="0" max="100" value="80" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <p class="mt-1 text-sm text-gray-500">Enter a value between 0 and 100</p>
+            </div>
+            
+            <!-- Category -->
+            <div>
+                <label for="category" class="block text-gray-700 font-medium mb-2">Category</label>
+                <select id="category" name="category" 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="Language">Programming Language</option>
+                    <option value="Framework">Framework</option>
+                    <option value="Library">Library</option>
+                    <option value="Tool">Tool</option>
+                    <option value="Database">Database</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <!-- Icon -->
+            <div>
+                <label for="icon" class="block text-gray-700 font-medium mb-2">Icon</label>
+<div class="relative">
+    <select id="icon" name="icon" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        <option value="" disabled selected>Select or enter an icon class (e.g., fa-brands fa-python)</option>
+        {% for icon in common_icons %}
+        <option value="{{ icon }}">{{ icon }}</option>
+        {% endfor %}
+    </select>
+    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+        <i class="fas fa-chevron-down text-gray-400"></i>
+    </div>
+</div>
+<input type="text" id="icon-manual" name="icon-manual" placeholder="Or type Font Awesome class (e.g., fa-brands fa-python)" class="mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" oninput="document.getElementById('icon').value=''; updateIconPreview(this.value);">
+<p class="mt-1 text-sm text-gray-500">
+    Choose a Font Awesome icon from the list or type a full class. Preview: <i id="icon-preview" class="fa-solid fa-code ml-1"></i>
+</p>
+<p id="icon-warning" class="mt-1 text-xs text-red-500 hidden">Warning: Please enter a valid Font Awesome icon class starting with 'fa-'.</p>
+<script>
+function updateIconPreview(iconClass) {
+    const iconPreview = document.getElementById('icon-preview');
+    iconPreview.className = 'ml-1';
+    if(iconClass && iconClass.startsWith('fa-')) {
+        iconPreview.className = iconClass + ' ml-1';
+        document.getElementById('icon-warning').classList.add('hidden');
+    } else {
+        iconPreview.className = 'fa-solid fa-code ml-1';
+        if(iconClass) document.getElementById('icon-warning').classList.remove('hidden');
+        else document.getElementById('icon-warning').classList.add('hidden');
+    }
+}
+document.getElementById('icon').addEventListener('change', function() {
+    document.getElementById('icon-manual').value = '';
+    updateIconPreview(this.value);
+});
+document.getElementById('icon-manual').addEventListener('input', function() {
+    updateIconPreview(this.value);
+});
+</script>
+            </div>
+            
+            <!-- Display Order -->
+            <div>
+                <label for="display_order" class="block text-gray-700 font-medium mb-2">Display Order</label>
+                <input type="number" id="display_order" name="display_order" value="0"
+                       class="w-24 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <p class="mt-1 text-sm text-gray-500">Lower numbers appear first</p>
+            </div>
+            
+            <!-- Submit Button -->
+            <div class="pt-4">
+                <button type="submit" 
+                        class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Add Skill
+                </button>
+            </div>
+        </form>
+        
+        <!-- Back to Home -->
+        <div class="mt-8 text-center">
+            <a href="{{ url_for('home') }}" 
+               class="text-blue-600 hover:text-blue-800 font-medium">
+                ← Back to Portfolio
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for icon preview -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const iconSelect = document.getElementById('icon');
+        const iconPreview = document.getElementById('icon-preview');
+        
+        // Update icon preview when selection changes
+        iconSelect.addEventListener('change', function() {
+            const selectedIcon = this.value;
+            // Remove all existing classes
+            iconPreview.className = '';
+            // Add the base class and selected icon class
+            iconPreview.classList.add('fas', selectedIcon, 'ml-1');
+        });
+        
+        // Initialize preview with default value
+        iconSelect.dispatchEvent(new Event('change'));
+    });
+</script>
+{% endblock %}

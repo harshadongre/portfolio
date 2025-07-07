@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+        <!-- Multiple Animated SVG Blobs for Depth -->
+        <svg class="absolute top-0 left-0 w-1/2 h-1/2 opacity-40 animate-spin-slow" style="z-index:-1" viewBox="0 0 400 400" fill="none"><ellipse cx="200" cy="200" rx="200" ry="200" fill="url(#paint0_radial)"/><defs><radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientTransform="translate(200 200) scale(200)" gradientUnits="userSpaceOnUse"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></radialGradient></defs></svg>
+        <svg class="absolute top-1/3 right-0 w-1/3 h-1/3 opacity-30 animate-pulse-slower" style="z-index:-1" viewBox="0 0 300 300" fill="none"><ellipse cx="150" cy="150" rx="150" ry="150" fill="url(#paint1_radial)"/><defs><radialGradient id="paint1_radial" cx="0" cy="0" r="1" gradientTransform="translate(150 150) scale(150)" gradientUnits="userSpaceOnUse"><stop stop-color="#f472b6"/><stop offset="1" stop-color="#facc15" stop-opacity="0"/></radialGradient></defs></svg>
+        <svg class="absolute bottom-0 left-1/4 w-1/4 h-1/4 opacity-20 animate-spin-reverse" style="z-index:-1" viewBox="0 0 200 200" fill="none"><ellipse cx="100" cy="100" rx="100" ry="100" fill="url(#paint2_radial)"/><defs><radialGradient id="paint2_radial" cx="0" cy="0" r="1" gradientTransform="translate(100 100) scale(100)" gradientUnits="userSpaceOnUse"><stop stop-color="#34d399"/><stop offset="1" stop-color="#818cf8" stop-opacity="0"/></radialGradient></defs></svg>
+
+        <!-- Glassmorphism Card -->
+        <div class="relative z-10 max-w-2xl mx-auto px-6 py-12 rounded-3xl bg-white/10 backdrop-blur-xl shadow-2xl border border-white/20 text-center animate-fade-in-glass">
+            <!-- Glowing Profile Image -->
+            <div class="relative mx-auto mb-8 w-56 h-56 rounded-full shadow-2xl border-8 border-gradient-to-r from-yellow-400 via-pink-400 to-purple-500 overflow-hidden animate-glow-profile">
+                <img src="/static/profile.jpg" alt="Profile Photo" class="w-full h-full object-cover rounded-full border-4 border-white/20 shadow-2xl">
+            </div>
+            <span class="inline-block px-5 py-2 mb-4 bg-white/30 text-white font-medium rounded-full shadow animate-fade-in" style="animation-delay:0.2s">Welcome to my portfolio</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 bg-gradient-to-r from-yellow-300 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-gradient-text animate-fade-in" style="animation-delay:0.4s">
+                Hi, I'm <span class="font-black">Harsha Dongre</span>
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-white animate-typewriter" id="typewriter-role">Full Stack Developer & Designer</h2>
+            <p class="text-lg text-gray-200 mb-8 animate-fade-in" style="animation-delay:0.8s">I craft exceptional digital experiences with clean, efficient code and beautiful designs.<br>Let’s build something amazing together!</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in" style="animation-delay:1s">
+                <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white font-bold rounded-xl shadow-xl hover:scale-110 hover:shadow-2xl transition-all duration-300 flex items-center gap-2 text-lg"><i class="fas fa-rocket"></i>View My Work</a>
+                <a href="#contact" class="px-8 py-3 bg-white/80 border-2 border-pink-400 text-pink-700 font-bold rounded-xl hover:bg-pink-50 hover:text-pink-900 shadow-lg transition-all duration-300 flex items-center gap-2 text-lg"><i class="far fa-paper-plane"></i>Contact Me</a>
+            </div>
+            <div class="mt-16 flex justify-center animate-fade-in" style="animation-delay:1.2s">
+  <a href="#about" class="flex flex-col items-center gap-2 animate-bounce-slow text-pink-300 hover:text-yellow-300 transition-colors duration-300">
+    <span class="block text-lg font-semibold glow-text mb-1">Scroll Down</span>
+    <span class="w-20 h-2 mb-2 bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 rounded-full blur-sm opacity-80"></span>
+    <i class="fas fa-chevron-down text-3xl drop-shadow-glow"></i>
+  </a>
+</div>
+        </div>
+        <style>
+        @keyframes spin-slow { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
+        .animate-spin-slow { animation: spin-slow 18s linear infinite; }
+        @keyframes spin-reverse { 0% { transform: rotate(0deg);} 100% { transform: rotate(-360deg);} }
+        .animate-spin-reverse { animation: spin-reverse 28s linear infinite; }
+        @keyframes fade-in-glass { from { opacity: 0; transform: scale(0.95) translateY(40px);} to { opacity: 1; transform: none;} }
+        .animate-fade-in-glass { opacity: 0; animation: fade-in-glass 1.2s cubic-bezier(.4,0,.2,1) forwards; }
+        @keyframes glow { 0%,100% { box-shadow: 0 0 32px 8px #a78bfa66; } 50% { box-shadow: 0 0 64px 16px #f472b666; } }
+        .animate-glow { animation: glow 3s ease-in-out infinite alternate; }
+        @keyframes gradient-text { 0%,100%{background-position:left} 50%{background-position:right} }
+        .animate-gradient-text { background-size: 200% 200%; animation: gradient-text 4s ease-in-out infinite; }
+        @keyframes typewriter { from { width: 0; } to { width: 100%; } }
+        .animate-typewriter { display: inline-block; overflow: hidden; white-space: nowrap; border-right: 3px solid #fff; animation: typewriter 2.5s steps(30, end) 1s 1 normal both; }
+        @keyframes fade-in { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: none;} }
+        .animate-fade-in { opacity: 0; animation: fade-in 1s cubic-bezier(.4,0,.2,1) forwards; }
+        .animate-fade-in[style*="animation-delay:0.2s"] { animation-delay: 0.2s; }
+        .animate-fade-in[style*="animation-delay:0.4s"] { animation-delay: 0.4s; }
+        .animate-fade-in[style*="animation-delay:0.6s"] { animation-delay: 0.6s; }
+        .animate-fade-in[style*="animation-delay:0.8s"] { animation-delay: 0.8s; }
+        .animate-fade-in[style*="animation-delay:1s"] { animation-delay: 1s; }
+        .animate-fade-in[style*="animation-delay:1.2s"] { animation-delay: 1.2s; }
+        @keyframes pulse-slower { 0%,100%{opacity:.3;} 50%{opacity:.6;} }
+        .animate-pulse-slower { animation: pulse-slower 6s cubic-bezier(.4,0,.6,1) infinite; }
+        .drop-shadow-glow { filter: drop-shadow(0 0 8px #f472b6) drop-shadow(0 0 8px #a78bfa); }
+        .glow-text { text-shadow: 0 0 8px #f472b6, 0 0 8px #a78bfa; }
+        </style>
+        <script>
+        // Typewriter effect for the role/title
+        document.addEventListener('DOMContentLoaded', function() {
+            var roles = ['Full Stack Developer', 'UI/UX Enthusiast', 'Open Source Contributor', 'Creative Coder'];
+            var roleElem = document.getElementById('typewriter-role');
+            var i = 0;
+            function typeRole() {
+                roleElem.classList.remove('animate-typewriter');
+                setTimeout(function() {
+                    roleElem.textContent = roles[i];
+                    roleElem.classList.add('animate-typewriter');
+                    i = (i + 1) % roles.length;
+                }, 500);
+            }
+            setInterval(typeRole, 3500);
+        });
+        </script>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="relative py-20 bg-gradient-to-br from-indigo-950 via-purple-950 to-pink-950 overflow-hidden">
+        <!-- Animated SVG Blob -->
+        <svg class="absolute -top-20 -left-32 w-96 h-96 opacity-20 animate-spin-slow" style="z-index:0" viewBox="0 0 400 400" fill="none"><ellipse cx="200" cy="200" rx="200" ry="200" fill="url(#about_blob)"/><defs><radialGradient id="about_blob" cx="0" cy="0" r="1" gradientTransform="translate(200 200) scale(200)" gradientUnits="userSpaceOnUse"><stop stop-color="#a78bfa"/><stop offset="1" stop-color="#38bdf8" stop-opacity="0"/></radialGradient></defs></svg>
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-12 bg-gradient-to-r from-yellow-300 via-pink-500 to-purple-500 bg-clip-text text-transparent animate-gradient-text">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <div class="bg-black/50 backdrop-blur-2xl rounded-2xl p-8 mb-6 shadow-2xl border border-white/60 animate-fade-in-glass">
+                        <p class="mb-4 text-lg" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">I'm a passionate Full Stack Developer with expertise in building web applications using modern technologies. With a strong foundation in Python and JavaScript, I create efficient, scalable, and user-friendly solutions.</p>
+                        <p class="mb-6 text-base" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">My journey in software development started [X] years ago, and since then I've worked on various projects ranging from simple websites to complex web applications.</p>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 text-white text-sm font-medium px-3 py-1 rounded-full shadow">Python</span>
+                            <span class="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 text-white text-sm font-medium px-3 py-1 rounded-full shadow">Flask</span>
+                            <span class="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 text-white text-sm font-medium px-3 py-1 rounded-full shadow">JavaScript</span>
+                            <span class="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 text-white text-sm font-medium px-3 py-1 rounded-full shadow">HTML/CSS</span>
+                            <span class="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 text-white text-sm font-medium px-3 py-1 rounded-full shadow">SQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-black/30 backdrop-blur-2xl rounded-2xl p-8 shadow-2xl border border-white/40 animate-fade-in-glass">
+                    <h3 class="text-xl font-semibold mb-4" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">My Skills</h3>
+                    <div class="space-y-4">
+                        {% if skills %}
+                            {% for skill in skills %}
+                            <div>
+                                <div class="flex items-center mb-1">
+                                    <i class="{{ skill.icon if skill.icon else 'fa-solid fa-code' }} mr-2 text-yellow-300"></i>
+                                    <span class="text-sm font-medium flex-1" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">{{ skill.name }}</span>
+                                    <span class="text-sm" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">{{ skill.level }}%</span>
+                                </div>
+                                <div class="w-full bg-gradient-to-r from-purple-900 via-indigo-900 to-pink-900 rounded-full h-2.5">
+                                    {% set width = skill.level ~ '%' %}
+                                    <div class="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 h-2.5 rounded-full" style="width: {{ width }}"></div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p style="color: #18181b; text-shadow: 0 2px 8px #fff8;">No skills added yet. Add some skills in the admin panel!</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="relative py-20 bg-gradient-to-b from-indigo-950 via-purple-950 to-pink-950 overflow-hidden">
+        <svg class="absolute top-0 right-0 w-80 h-80 opacity-10 animate-spin-reverse" style="z-index:0" viewBox="0 0 400 400" fill="none"><ellipse cx="200" cy="200" rx="200" ry="200" fill="url(#projects_blob)"/><defs><radialGradient id="projects_blob" cx="0" cy="0" r="1" gradientTransform="translate(200 200) scale(200)" gradientUnits="userSpaceOnUse"><stop stop-color="#f472b6"/><stop offset="1" stop-color="#facc15" stop-opacity="0"/></radialGradient></defs></svg>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 animate-fade-in-glass">
+                <span class="inline-block px-4 py-1 text-sm font-semibold text-white bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 rounded-full mb-3 shadow">PORTFOLIO</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-300 via-pink-500 to-purple-500 bg-clip-text text-transparent mb-4 animate-gradient-text">Featured Projects</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 mx-auto rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for project in projects %}
+                <div class="group relative overflow-hidden rounded-2xl shadow-2xl bg-white/10 backdrop-blur-xl border border-white/10 hover:scale-105 hover:shadow-yellow-400/30 transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-glass" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+                    <div class="relative overflow-hidden h-60">
+                        {% if project.image %}
+                        <img src="{{ url_for('static', filename='uploads/' + project.image) }}" alt="{{ project.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 rounded-t-2xl">
+                        {% else %}
+                        <div class="w-full h-full bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex items-center justify-center">
+                            <i class="fas fa-code text-4xl text-pink-400"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <div class="flex space-x-3 mb-3">
+                                {% if project.technologies %}
+                                    {% for tech in project.technologies.split(',') %}
+                                        <span class="px-3 py-1 text-xs font-medium text-white bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400/80 backdrop-blur-sm rounded-full shadow">
+{{ tech.strip() }}
+                                        </span>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-5 right-5 flex space-x-2">
+                            {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" 
+                               class="w-10 h-10 flex items-center justify-center bg-gradient-to-tr from-yellow-400 via-pink-400 to-purple-400 text-white shadow-lg hover:scale-110 transition-all duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            {% endif %}
+                            {% if project.live_url %}
+                            <a href="{{ project.live_url }}" target="_blank" 
+                               class="w-10 h-10 flex items-center justify-center bg-gradient-to-tr from-green-400 via-blue-400 to-purple-400 text-white shadow-lg hover:scale-110 transition-all duration-300">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-400 transition-colors duration-300" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">{{ project.title }}</h3>
+                        <p class="mb-4 line-clamp-3" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">{{ project.description }}</p>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                            <a href="{{ url_for('project_detail', project_id=project.id) }}" 
+                               class="inline-flex items-center font-bold text-yellow-300 hover:text-pink-400 group-hover:underline transition-colors duration-300">
+                                View Project
+                                <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1 duration-300"></i>
+                            </a>
+                            {% if project.date_completed %}
+                            <span class="text-sm text-purple-200">{{ project.date_completed.strftime('%b %Y') }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-span-3 text-center py-12 animate-fade-in-glass">
+                    <div class="inline-block p-6 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl border border-white/10">
+                        <i class="fas fa-inbox text-5xl text-pink-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">No Projects Yet</h3>
+                        <p style="color: #18181b; text-shadow: 0 2px 8px #fff8;">I'm currently working on some amazing projects. Check back soon!</p>
+                    </div>
+                </div>
+{% endfor %}
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in-glass">
+                <a href="#" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-500 text-white font-bold rounded-xl shadow-xl hover:scale-110 hover:shadow-2xl transition-all duration-300 text-lg">
+                    <i class="fab fa-github mr-2"></i>
+                    View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-20 bg-gradient-to-br from-indigo-950 via-purple-950 to-pink-950 overflow-hidden">
+        <svg class="absolute -bottom-16 right-0 w-96 h-96 opacity-10 animate-spin-slow" style="z-index:0" viewBox="0 0 400 400" fill="none"><ellipse cx="200" cy="200" rx="200" ry="200" fill="url(#contact_blob)"/><defs><radialGradient id="contact_blob" cx="0" cy="0" r="1" gradientTransform="translate(200 200) scale(200)" gradientUnits="userSpaceOnUse"><stop stop-color="#f472b6"/><stop offset="1" stop-color="#facc15" stop-opacity="0"/></radialGradient></defs></svg>
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-12" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">Get In Touch</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 shadow-xl border border-white/10 animate-fade-in-glass">
+                    <h3 class="text-xl font-semibold mb-4" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">Contact Information</h3>
+                    <p class="mb-6" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">Feel free to reach out to me for any questions or opportunities. I'll get back to you as soon as possible!</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-gradient-to-tr from-yellow-400 via-pink-400 to-purple-400 p-3 rounded-full mr-4 shadow">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">Email</h4>
+                                <p style="color: #18181b; text-shadow: 0 2px 8px #fff8;">your.email@example.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-gradient-to-tr from-yellow-400 via-pink-400 to-purple-400 p-3 rounded-full mr-4 shadow">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">Phone</h4>
+                                <p style="color: #18181b; text-shadow: 0 2px 8px #fff8;">+1 (123) 456-7890</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-gradient-to-tr from-yellow-400 via-pink-400 to-purple-400 p-3 rounded-full mr-4 shadow">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">Location</h4>
+                                <p style="color: #18181b; text-shadow: 0 2px 8px #fff8;">San Francisco, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-yellow-300 hover:text-pink-400">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-yellow-300 hover:text-pink-400">
+                                <i class="fab fa-linkedin text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-yellow-300 hover:text-pink-400">
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-yellow-300 hover:text-pink-400">
+                                <i class="fab fa-instagram text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-8 shadow-xl border border-white/10 animate-fade-in-glass">
+                    <h3 class="text-xl font-semibold mb-6" style="color: #18181b; text-shadow: 0 2px 8px #fff8;">Send Me a Message</h3>
+                    <form action="{{ url_for('contact') }}" method="POST">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" required
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" required
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-12">
+    <a href="{{ url_for('home') }}" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6">
+        <i class="fas fa-arrow-left mr-2"></i> Back to Projects
+    </a>
+    
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        {% if project.image %}
+        <img src="{{ url_for('static', filename='uploads/' + project.image) }}" 
+             alt="{{ project.title }}" 
+             class="w-full h-96 object-cover">
+        {% else %}
+        <div class="w-full h-96 bg-gray-200 flex items-center justify-center">
+            <span class="text-gray-400 text-xl">No Image Available</span>
+        </div>
+        {% endif %}
+        
+        <div class="p-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ project.title }}</h1>
+            <div class="flex items-center text-gray-600 mb-6">
+                <span class="mr-4">
+                    <i class="far fa-calendar-alt mr-1"></i> 
+                    {{ project.date_created.strftime('%B %d, %Y') }}
+                </span>
+                {% if project.github_url or project.live_url %}
+                <div class="flex space-x-4">
+                    {% if project.github_url %}
+                    <a href="{{ project.github_url }}" target="_blank" 
+                       class="text-gray-600 hover:text-gray-900"
+                       title="View on GitHub">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    {% endif %}
+                    {% if project.live_url %}
+                    <a href="{{ project.live_url }}" target="_blank"
+                       class="text-gray-600 hover:text-gray-900"
+                       title="View Live">
+                        <i class="fas fa-external-link-alt text-xl"></i>
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="prose max-w-none">
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    {{ project.description|replace('\n', '</p><p class="text-gray-700 text-lg leading-relaxed">')|safe }}
+                </p>
+            </div>
+            
+            <div class="mt-12 pt-6 border-t border-gray-200">
+                <h3 class="text-xl font-semibold mb-4">Project Details</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="font-medium text-gray-900">Technologies Used</h4>
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Python</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Flask</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">HTML/CSS</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">JavaScript</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-medium text-gray-900">Project Links</h4>
+                        <div class="mt-2 space-y-2">
+                            {% if project.github_url %}
+                            <div>
+                                <a href="{{ project.github_url }}" target="_blank" 
+                                   class="text-blue-600 hover:underline flex items-center">
+                                    <i class="fab fa-github mr-2"></i> View on GitHub
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if project.live_url %}
+                            <div>
+                                <a href="{{ project.live_url }}" target="_blank"
+                                   class="text-blue-600 hover:underline flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2"></i> View Live Demo
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-12 text-center">
+        <a href="{{ url_for('home') }}#contact" 
+           class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <i class="fas fa-paper-plane mr-2"></i> Get In Touch
+        </a>
+    </div>
+</div>
+{% endblock %}
